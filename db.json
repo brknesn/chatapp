@@ -1,0 +1,57 @@
+{
+  "channels": [
+    {
+      "id": 1,
+      "name": "Group",
+      "users": [1, 2]
+    },
+    {
+      "id": 2,
+      "name": "Test",
+      "users": [1]
+    },
+    {
+      "id": 3,
+      "name": "Test 2",
+      "users": [2, 1]
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "Birkan",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4D03AQG9dpL0gShAag/profile-displayphoto-shrink_200_200/0/1580839598511?e=1673481600&v=beta&t=Leb3lkLIP3MfdNKJHQEVtVo47sPSGZssdSue0e_Yv8Y"
+    },
+    {
+      "id": 2,
+      "username": "Fatih",
+      "avatar": "https://media-exp1.licdn.com/dms/image/C4D03AQHK0hmGmn8pHA/profile-displayphoto-shrink_200_200/0/1656336741597?e=1673481600&v=beta&t=yBCKjywmhtfky451WvZSYAUVNZo--IAEXIzblle321c"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "message": "How are ya?",
+      "userId": 1,
+      "channelId": 1
+    },
+    {
+      "id": 2,
+      "message": "I'm ok!",
+      "userId": 2,
+      "channelId": 1
+    },
+    {
+      "id": 3,
+      "message": "Hello!",
+      "userId": 1,
+      "channelId": 2
+    },
+    {
+      "id": 4,
+      "message": "Hi",
+      "channelId": 3,
+      "userId": 2
+    }
+  ]
+}
