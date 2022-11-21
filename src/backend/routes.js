@@ -95,6 +95,7 @@ module.exports = function (fastify, options, done) {
         channelId,
         message,
         userId,
+        date
       };
 
       const data = await axiosInstance.post(
@@ -121,6 +122,8 @@ module.exports = function (fastify, options, done) {
 
       const chData = {
         name,
+        createdBy: userId,
+        date: new Date(),
         users: [userId],
       };
 

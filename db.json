@@ -33,25 +33,29 @@
       "id": 1,
       "message": "How are ya?",
       "userId": 1,
+      "date": "2022-11-19T10:50:03.553Z",
       "channelId": 1
     },
     {
       "id": 2,
       "message": "I'm ok!",
       "userId": 2,
+      "date": "2022-11-19T10:52:03.553Z",
       "channelId": 1
     },
     {
       "id": 3,
       "message": "Hello!",
       "userId": 1,
-      "channelId": 2
+      "channelId": 2,
+      "date": "2021-11-20T10:52:03.553Z"
     },
     {
       "id": 4,
       "message": "Hi",
       "channelId": 3,
-      "userId": 2
+      "userId": 2,
+      "date": "2021-11-20T10:52:03.553Z"
     }
   ]
 }

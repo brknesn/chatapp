@@ -9,11 +9,13 @@ const state = reactive({
   currentChannel: {},
   currentUser: {},
 });
-
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:8080"
+})
 export default function () {
   const setUser = async (userId) => {
     try {
-      const response = await axios.get("http://localhost:3000/users/" + userId);
+      const response = await axiosInstance.get("/users" + userId);
       const { data } = response;
       state.currentUser = data;
 
@@ -24,8 +26,8 @@ export default function () {
   };
   const setChannelUsers = async (channelId) => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/channels/" + channelId + "/users"
+      const response = await axiosInstance.get(
+        "/channels/" + channelId + "/users"
       );
       const { data } = response;
       state.channelUsers = data;
@@ -35,8 +37,8 @@ export default function () {
   };
   const getMessages = async (channelId) => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/messages/" + channelId
+      const response = await axiosInstance.get(
+        "/messages/" + channelId
       );
       const { data } = response;
       state.channelMessages = data;
@@ -47,8 +49,8 @@ export default function () {
 
   const getChannels = async (userId) => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/channels?userId=" + userId
+      const response = await axiosInstance.get(
+        "/channels?userId=" + userId
       );
       const { data } = response;
       state.channels = data;
@@ -60,8 +62,8 @@ export default function () {
 
   const setChannel = async (channelId) => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/channels/" + channelId
+      const response = await axiosInstance.get(
+        "/channels/" + channelId
       );
       const { data } = response;
       state.currentChannel = data;
@@ -71,7 +73,37 @@ export default function () {
       state.error = err;
     }
   };
+  const createChannel = async (userId, name) => {
+    try {
 
+        const response = await instance.post('/channels', {
+            userId,
+            name
+        })
+        const { data } = response;
+
+        await getChannels(userId)
+        await setChannel(data.id)
+    } catch (err) {
+        state.error = err
+    }
+  }
+
+  const sendMessage = async (userId, channelId, message) => {
+    try {
+
+       await axiosInstance.post('/messages', {
+            userId,
+            channelId,
+            message,
+            date: new Date()
+        })
+
+        await getMessages(channelId)
+    } catch (err) {
+        state.error = err
+    }
+  }
   return {
     ...toRefs(state),
     getChannels,
@@ -79,5 +111,7 @@ export default function () {
     setChannel,
     getMessages,
     setUser,
+    createChannel,
+    sendMessage
   };
 }
